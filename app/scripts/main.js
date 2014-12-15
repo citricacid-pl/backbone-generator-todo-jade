@@ -17,7 +17,10 @@ require.config({
 });
 
 require([
-    'backbone'
-], function (Backbone) {
+    'backbone',
+    'collections/todos'
+], function (Backbone, TodosCollection) {
+    var todosCollection = new TodosCollection();
+
     Backbone.history.start();
 });
