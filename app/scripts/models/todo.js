@@ -9,16 +9,24 @@ define([
     var TodoModel = Backbone.Model.extend({
         url: '',
 
-        initialize: function() {
+        initialize: function () {
         },
 
         defaults: {
+            title: '',
+            completed: false
         },
 
-        validate: function(attrs, options) {
+        toggle: function () {
+            this.save({
+                completed: !this.get('completed')
+            });
         },
 
-        parse: function(response, options)  {
+        validate: function (attrs, options) {
+        },
+
+        parse: function (response, options) {
             return response;
         }
     });

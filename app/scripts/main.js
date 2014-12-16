@@ -12,15 +12,19 @@ require.config({
         jquery: '../bower_components/jquery/dist/jquery',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
-        bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap'
+        bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
+        localStorage: '../bower_components/backbone.localStorage/backbone.localStorage-min'
     }
 });
 
 require([
     'backbone',
+    'views/todos',
     'collections/todos'
-], function (Backbone, TodosCollection) {
-    var todosCollection = new TodosCollection();
+], function (Backbone, TodosView, TodosCollection) {
+    var todosView = new TodosView({
+        collection: new TodosCollection()
+    });
 
     Backbone.history.start();
 });
