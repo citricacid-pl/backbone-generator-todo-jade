@@ -9,7 +9,7 @@ define([
     'use strict';
 
     var TodoView = Backbone.View.extend({
-        template: JST['app/scripts/templates/todo.ejs'],
+        template: JST['app/scripts/templates/todo'],
 
         tagName: 'li',
 

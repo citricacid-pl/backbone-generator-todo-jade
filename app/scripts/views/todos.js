@@ -13,7 +13,7 @@ define([
     var TodosView = Backbone.View.extend({
         el: '#todo-app',
 
-        template: JST['app/scripts/templates/todos.ejs'],
+        template: JST['app/scripts/templates/todos'],
 
         tagName: 'div',
 

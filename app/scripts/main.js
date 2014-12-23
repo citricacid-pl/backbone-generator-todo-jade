@@ -13,7 +13,8 @@ require.config({
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
         bootstrap: '../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap',
-        localStorage: '../bower_components/backbone.localStorage/backbone.localStorage-min'
+        localStorage: '../bower_components/backbone.localStorage/backbone.localStorage-min',
+        jade: '../bower_components/jade/jade'
     }
 });
 

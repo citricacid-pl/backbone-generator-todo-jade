@@ -49,11 +49,11 @@ module.exports = function (grunt) {
                     'test/spec/**/*.js'
                 ]
             },
-            jst: {
+            jade: {
                 files: [
-                    '<%= yeoman.app %>/scripts/templates/*.ejs'
+                    '<%= yeoman.app %>/scripts/templates/*.jade'
                 ],
-                tasks: ['jst']
+                tasks: ['jade:compile']
             },
             test: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
@@ -251,14 +251,19 @@ module.exports = function (grunt) {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
         },
-        jst: {
-            options: {
-                amd: true
-            },
+        jade: {
             compile: {
-                files: {
-                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
-                }
+                options: {
+                    pretty: true,
+                    client: true,
+                    amd: true,
+                    data: {
+                        debug: true
+                    }
+                },
+                files: [{
+                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.jade']
+                }]
             }
         },
         rev: {
@@ -294,7 +299,7 @@ module.exports = function (grunt) {
             return grunt.task.run([
                 'clean:server',
                 'createDefaultTemplate',
-                'jst',
+                'jade:compile',
                 'compass:server',
                 'connect:test',
                 'open:test',
@@ -305,7 +310,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'createDefaultTemplate',
-            'jst',
+            'jade:compile',
             'compass:server',
             'connect:livereload',
             'open:server',
@@ -318,7 +323,7 @@ module.exports = function (grunt) {
         var testTasks = [
                 'clean:server',
                 'createDefaultTemplate',
-                'jst',
+                'jade:compile',
                 'compass',
                 'connect:test',
                 'mocha',
@@ -336,7 +341,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'createDefaultTemplate',
-        'jst',
+        'jade:compile',
         'compass:dist',
         'useminPrepare',
         'requirejs',
